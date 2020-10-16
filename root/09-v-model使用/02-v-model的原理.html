@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
 </head>
 <body>
   <div id="app">
+    <!--<input v-model="message">-->
+    <!--背后包含了两个指令，一个v-on:input和v-bind:value-->
+    <input @input="valueChange" :value="message"/>
     <h1>{{message}}</h1>
-    {{message}}
   </div>
   <script src="../js/vue.js"></script>
   <script>
@@ -15,6 +17,11 @@
       el: '#app',
       data:{
         message: '你好'
+      },
+      methods: {
+        valueChange(event) {
+          this.message = event.target.value;
+        }
       }
     });
   </script>
