@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <!--条件多的时候，可以不用这种写法，在computed中定义属性判断更合适-->
+    <p v-if="score>=90">优秀</p>
+    <p v-else-if="score>=60">及格</p>
+    <p v-else>不及格</p>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        score: 98
+      }
+    })
+  </script>
+</body>
+</html>

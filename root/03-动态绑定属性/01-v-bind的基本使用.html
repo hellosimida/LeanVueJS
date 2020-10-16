@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <!--  :是v-bind的语法糖，效果是一样的-->
+    <img :src="imgURL">
+    <img v-bind:src="imgURL"><br>
+    <a :href="ahref">百度一下</a>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好呀',
+        imgURL: 'https://m1-1253159997.image.myqcloud.com/imageDir/aed97c40e22f82f2668d95232dd58a4c.jpg',
+        ahref: 'https://www.baidu.com'
+      }
+    })
+  </script>
+</body>
+</html>

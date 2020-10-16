@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <!--.stop修饰符的使用-->
+    <div @click="divClick">
+      .stop修饰符的使用
+      <!--点击按钮，上面的divClick也会被触发，冒泡事件，为了阻止冒泡，我们使用stop修饰符-->
+      <button @click="btnClick">按钮</button>
+      <button @click.stop="btnClick">按钮1</button>
+    </div>
+
+    <!--.prevent阻止默认事件-->
+    <form action="/baidu.com">
+      <!--submit默认提交，如果我们想手动提交，需要使用.prevent阻止默认事件-->
+      <input @click.prevent="submitClick" type="submit"/>
+    </form>
+
+    <!--监听键盘某个键帽的点击-->
+    <input type="text" @keyup.enter="keyUP"/>
+
+    <!--.native 后续补充-->
+
+    <!--.once 只允许点一次-->
+    <button @click.once="btnClick1">按钮2</button>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好呀'
+      },
+      methods: {
+        btnClick() {
+          console.log('btnClick')
+        },
+        divClick() {
+          console.log('divClick')
+        },
+        submitClick() {
+          console.log('submitClick')
+        },
+        keyUP() {
+          console.log('keyUP')
+        },
+        btnClick1() {
+          console.log('btnClick1')
+        }
+      }
+    })
+  </script>
+</body>
+</html>

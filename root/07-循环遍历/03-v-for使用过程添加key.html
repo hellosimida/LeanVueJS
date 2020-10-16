@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <!--加key会增加效率，因为当数组发生变化时，如何没加key需要全部进行重新渲染，如果加了key，只需要对比不同的部分进行渲染，
+      并且key最好是不变化的元素，比如index就不能作为key,最好使用item-->
+      <li v-for="item in letters" :key="item">{{item}}</li>
+    </ul>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        letters: ['A','B','C','D']
+      }
+    })
+  </script>
+</body>
+</html>

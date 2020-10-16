@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{message}},钢铁侠</h2>
+    <!--下面绑定的值会覆盖标签里的值，不灵活，不推荐使用-->
+    <h2 v-text="message">，钢铁侠</h2>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好呀'
+      }
+    })
+  </script>
+</body>
+</html>

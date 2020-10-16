@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="item in letters">{{item}}</li>
+    </ul>
+    <button @click="push">push</button>
+    <button @click="splice">splice</button>
+    <button @click="updateLetters">updateLetters不能响应</button>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        letters: ['A','B','C','D']
+      },
+      methods: {
+        //响应式的 还有pop()删除最后一个元素,shift()删除数组最后一个元素,unshift()在数组第一个位置添加一个元素,
+        push() {
+          this.letters.push('E');//在最后添加一个元素
+        },
+        splice() {
+          this.letters.splice(1,0,'F');//在数组中间位置插入
+        },
+        updateLetters(){
+          //修改数组的值，数组是修改成功了，但是页面上不会响应
+          this.letters[0] = 'bbbbbbbbbb'
+        }
+      }
+    })
+  </script>
+</body>
+</html>
