@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <!--组件中props定义变量，将父组件的数据绑定到子组件中，然后在模板中使用新变量-->
+    <cpn :cmovies="movies" :cmessage="message"></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <ul>
+        <li v-for="item in cmovies">{{item}}</li>
+      </ul>
+      <h2>{{cmessage}}</h2>
+    </div>
+  </template>
+  <script src="../js/vue.js"></script>
+  <script>
+    /*父组件向子组件*/
+    const cpn = {
+      template: '#cpn',
+      //props:['cmovies','cmessage'],
+      props: {//增加类型验证，支持的类型 String Number Boolean Array Object Date Function Symbol
+        //cmovies: Array,
+        //cmessage: String
+        cmovies: {//2.5.17版本后必须这样将default封装成一个函数
+          type: Array,
+          default(){
+            return []
+          }
+        },
+        cmessage: {//这种写法更详细
+          type: String,
+          default: '默认值',
+          required: true
+        }
+      },
+      data(){
+        return{
+
+        }
+      },
+      methods:{
+
+      }
+    }
+
+    const app = new Vue({
+      el: '#app',
+      data: {
+        movies: ['电影1','电影2','电影3','电影4'],
+        message: '你好呀'
+      },
+      components: {
+        cpn
+      }
+    })
+  </script>
+</body>
+</html>

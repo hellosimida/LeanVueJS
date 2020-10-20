@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <!--父组件模板-->
+  <div id="app">
+    <cpn :c-message="message"></cpn>
+  </div>
+
+  <!--子组件模板-->
+  <template id="cpn">
+    <div>
+      <h2>{{cMessage}}</h2>
+    </div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+
+    const cpn = {
+      template: '#cpn',
+      props: {
+        cMessage:{
+          type: String
+        }
+      }
+    }
+
+    //父组件
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好呀'
+      },
+      components: {
+        cpn
+      }
+    })
+  </script>
+</body>
+</html>
