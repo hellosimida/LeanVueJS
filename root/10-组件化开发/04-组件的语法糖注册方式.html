@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <cpn></cpn>
+    <cpn1></cpn1>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+
+    /*全局组件注册的语法糖，省略创建构造器步骤*/
+    Vue.component('cpn',{
+      template:`
+        <h1>呵呵呵</h1>
+      `
+    });
+
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好呀'
+      },
+      components: {
+        cpn1: {
+          template:`
+            <h1>哈哈哈</h1>
+          `
+        }
+      }
+    })
+  </script>
+</body>
+</html>
