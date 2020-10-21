@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{num1}}</h2>
+    <h2>{{num2}}</h2>
+    <cpn :c-num1="num1" :c-num2="num2" @change-number1="changeNumber1" @change-number1="changeNumber2"></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h2>{{cNum1}}</h2>
+      <input v-model="dNumber1" :value="dNumber1" @input="number1Input"/>
+      <h2>{{cNum2}}</h2>
+      <input v-model="dNumber2" :value="dNumber2" @input="number2Input"/>
+    </div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+
+    const cpn = {
+      template: '#cpn',
+      props: {
+        cNum1: {
+          type: Number
+        },
+        cNum2: {
+          type: Number
+        }
+      },
+      methods: {
+        number1Input(event){
+          this.dNumber1 = event.target.value;
+          this.$emit('chang-number1',this.dNumber1);
+        },
+        number2Input(event){
+          this.dNumber2 = event.target.value;
+          this.$emit('chang-number2',this.dNumber1);
+        }
+      },
+      data(){
+        return {
+          dNumber1: this.cNum1,
+          dNumber2: this.cNum2,
+        }
+      }
+    }
+
+    const app = new Vue({
+      el: '#app',
+      data: {
+        num1: 0,
+        num2: 1
+      },
+      components: {
+        cpn
+      },
+      methods: {
+        changeNumber1(num1){
+          this.num1 = num1;
+        },
+        changeNumber2(num2){
+          this.num2 = num2;
+        }
+      }
+    })
+  </script>
+</body>
+</html>
