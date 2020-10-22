@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <div>
+      <cpn></cpn>
+      <cpn></cpn>
+      <cpn ref="aaa"></cpn>
+      <button @click="btnClick">按钮</button>
+    </div>
+  </div>
+
+  <template id="cpn">
+    <div>
+        我是子组件
+    </div>
+  </template>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好呀'
+      },
+      components:{
+        cpn: {
+          template: '#cpn',
+          methods: {
+            showMessage(){
+              console.log('showMessage')
+            }
+          },
+          data(){
+            return{
+              name:'我是name'
+            }
+          }
+        }
+      },
+      methods: {
+        btnClick(){
+          /*默认取所有的子组件对象返回一个数组*/
+          //this.$children[0].showMessage();
+          /*在组件上写上ref标签，则指定获取有一个子组件的对象*/
+          this.$refs.aaa.showMessage();
+        }
+      }
+    })
+  </script>
+</body>
+</html>
