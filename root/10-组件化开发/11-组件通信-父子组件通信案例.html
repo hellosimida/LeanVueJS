@@ -8,15 +8,15 @@
   <div id="app">
     <h2>{{num1}}</h2>
     <h2>{{num2}}</h2>
-    <cpn :c-num1="num1" :c-num2="num2" @change-number1="changeNumber1" @change-number1="changeNumber2"></cpn>
+    <cpn :c-num1="num1" :c-num2="num2" @change-number1="changeNumber1" @change-number2="changeNumber2"></cpn>
   </div>
 
   <template id="cpn">
     <div>
       <h2>{{cNum1}}</h2>
-      <input v-model="dNumber1" :value="dNumber1" @input="number1Input"/>
+      <input :value="dNumber1" @input="number1Input"/>
       <h2>{{cNum2}}</h2>
-      <input v-model="dNumber2" :value="dNumber2" @input="number2Input"/>
+      <input :value="dNumber2" @input="number2Input"/>
     </div>
   </template>
 
@@ -36,11 +36,11 @@
       methods: {
         number1Input(event){
           this.dNumber1 = event.target.value;
-          this.$emit('chang-number1',this.dNumber1);
+          this.$emit('change-number1',this.dNumber1);
         },
         number2Input(event){
           this.dNumber2 = event.target.value;
-          this.$emit('chang-number2',this.dNumber1);
+          this.$emit('change-number2',this.dNumber2);
         }
       },
       data(){
@@ -62,10 +62,10 @@
       },
       methods: {
         changeNumber1(num1){
-          this.num1 = num1;
+          this.num1 = Number(num1);
         },
         changeNumber2(num2){
-          this.num2 = num2;
+          this.num2 = Number(num2);
         }
       }
     })
