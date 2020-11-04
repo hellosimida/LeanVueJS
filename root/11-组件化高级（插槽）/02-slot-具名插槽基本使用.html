@@ -6,16 +6,16 @@
 </head>
 <body>
   <div id="app">
-    <!--会自动将组件里的标签替换到<slot></slot>的位置，如果没有标签则默认使用插槽的标签，有标签则替换-->
-    <cpn><button>按钮</button></cpn>
-    <cpn><span>哈哈哈哈</span></cpn>
-    <cpn></cpn>
+    <cpn><span>标题</span></cpn>
+    <cpn><span slot="center">标题</span></cpn>
   </div>
 
   <template id="cpn">
     <div>
-      <p>我是组件哈哈哈</p>
-      <slot><button>按钮</button></slot>
+      <slot name="left"><span>左边的</span></slot>
+      <slot name="center"><span>中间的</span></slot>
+      <slot name="right"><span>右边的</span></slot>
+      <slot><span>哈哈哈</span></slot>
     </div>
   </template>
 
